@@ -43,7 +43,10 @@ void registeredObjectCallbacksInfo(OBJECT_TYPE ob) // each OBJECT_TYPE contains 
 				DbgPrintEx(0, 0, "PreOperation %p | PostOperation %p | Operation %s | Altitude %S | Module %s",
 					cItem->PreOperation,
 					cItem->PostOperation,
-					(cItem->Operations == OB_OPERATION_HANDLE_CREATE) ? "HANDLE_CREATE" : "HANDLE_DUPLICATE",
+					
+					(cItem->Operations == (OB_OPERATION_HANDLE_CREATE | OB_OPERATION_HANDLE_DUPLICATE)) ? "HANDLE_CREATE, HANDLE_DUPLICATE" :
+					(cItem->Operations == (OB_OPERATION_HANDLE_CREATE)) ? "HANDLE_CREATE" : "HANDLE_DUPLICATE",
+					   
 					cItem->CallbackEntry->AltitudeString,
 					pModInfo->Module[i].FullPathName);
 			}
