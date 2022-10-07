@@ -40,9 +40,10 @@ void registeredObjectCallbacksInfo(OBJECT_TYPE ob) // each OBJECT_TYPE contains 
 			if ((ULONG64)cItem->PreOperation > (ULONG64)pModInfo->Module[i].ImageBase
 				&& (ULONG64)cItem->PreOperation < ((ULONG64)pModInfo->Module[i].ImageBase + pModInfo->Module[i].ImageSize))
 			{
-				DbgPrintEx(0, 0, "PreOperation %p : PostOperation %p : Altitude %S : Module %s",
+				DbgPrintEx(0, 0, "PreOperation %p | PostOperation %p | Operation %s | Altitude %S | Module %s",
 					cItem->PreOperation,
 					cItem->PostOperation,
+					(cItem->Operations == OB_OPERATION_HANDLE_CREATE) ? "HANDLE_CREATE" : "HANDLE_DUPLICATE",
 					cItem->CallbackEntry->AltitudeString,
 					pModInfo->Module[i].FullPathName);
 			}
